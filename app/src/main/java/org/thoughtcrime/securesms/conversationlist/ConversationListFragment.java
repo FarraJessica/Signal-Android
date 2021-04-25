@@ -71,6 +71,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.signal.core.util.concurrent.SignalExecutors;
 import org.signal.core.util.logging.Log;
+import org.thoughtcrime.securesms.AddNewContact;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.MainFragment;
 import org.thoughtcrime.securesms.MainNavigator;
@@ -171,6 +172,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
   private TextView                          searchEmptyState;
   private PulsingFloatingActionButton       fab;
   private PulsingFloatingActionButton       cameraFab;
+  private PulsingFloatingActionButton       addContact;
   private Stub<SearchToolbar>               searchToolbar;
   private ImageView                         proxyStatus;
   private ImageView                         searchAction;
@@ -210,6 +212,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
     list                    = view.findViewById(R.id.list);
     fab                     = view.findViewById(R.id.fab);
     cameraFab               = view.findViewById(R.id.camera_fab);
+    addContact              = view.findViewById(R.id.addcontact);
     searchEmptyState        = view.findViewById(R.id.search_no_results);
     searchAction            = view.findViewById(R.id.search_action);
     toolbarShadow           = view.findViewById(R.id.conversation_list_toolbar_shadow);
@@ -229,6 +232,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
     fab.show();
     cameraFab.show();
+    addContact.show();
 
     list.setLayoutManager(new LinearLayoutManager(requireActivity()));
     list.setItemAnimator(new DeleteItemAnimator());
@@ -249,6 +253,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
                  .onAnyDenied(() -> Toast.makeText(requireContext(), R.string.ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video, Toast.LENGTH_LONG).show())
                  .execute();
     });
+    addContact.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddNewContact.class)));
 
     initializeViewModel();
     initializeListAdapters();
@@ -298,6 +303,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
     fab.stopPulse();
     cameraFab.stopPulse();
+    addContact.stopPulse();
     EventBus.getDefault().unregister(this);
   }
 
@@ -904,6 +910,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
       emptyState.get().setVisibility(View.VISIBLE);
       fab.startPulse(3 * 1000);
       cameraFab.startPulse(3 * 1000);
+      addContact.startPulse();
 
       SignalStore.onboarding().setShowNewGroup(true);
       SignalStore.onboarding().setShowInviteFriends(true);
@@ -911,6 +918,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
       list.setVisibility(View.VISIBLE);
       fab.stopPulse();
       cameraFab.stopPulse();
+      addContact.stopPulse();
 
       if (emptyState.resolved()) {
         emptyState.get().setVisibility(View.GONE);

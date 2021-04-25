@@ -211,6 +211,18 @@
         app:layout_behavior="org.thoughtcrime.securesms.util.views.SlideUpWithSnackbarBehavior">
 
       <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
+          android:id="@+id/addcontact"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:layout_marginBottom="16dp"
+          android:contentDescription="@string/conversation_list_fragment__fab_content_description"
+          android:focusable="true"
+          android:tint="@color/core_white"
+          app:srcCompat="@drawable/ic_update_group_add_16"
+          app:backgroundTint="@color/blue_500"/>
+
+      <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
           android:id="@+id/camera_fab"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -219,8 +231,8 @@
           android:layout_marginTop="8dp"
           android:contentDescription="@string/conversation_list_fragment__open_camera_description"
           android:focusable="true"
-          android:tint="@color/signal_icon_tint_secondary"
-          app:backgroundTint="@color/conversation_list_camera_button_background"
+          android:tint="@color/core_white"
+          app:backgroundTint="@color/blue_700"
           app:srcCompat="@drawable/ic_camera_solid_white_24" />
 
       <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
@@ -233,7 +245,7 @@
           android:focusable="true"
           android:tint="@color/core_white"
           app:srcCompat="@drawable/ic_compose_solid_24"
-          app:backgroundTint="@color/core_ultramarine"/>
+          app:backgroundTint="@color/blue_900"/>
 
       <ViewStub
           android:id="@+id/megaphone_container"

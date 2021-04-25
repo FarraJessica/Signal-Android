@@ -53,4 +53,6 @@ public class PulsingFloatingActionButton extends FloatingActionButton {
     }).start();
   }
 
+  public void startPulse() {
+  }
 }

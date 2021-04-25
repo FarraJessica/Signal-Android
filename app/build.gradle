@@ -41,6 +41,9 @@ repositories {
     maven {
         url "https://dl.cloudsmith.io/qxAgwaeEE1vN8aLU/mobilecoin/mobilecoin/maven/"
     }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 protobuf {
@@ -449,6 +452,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.github.mukeshsolanki:MarkdownView-Android:1.1.1'
 }
 
 dependencyVerification {

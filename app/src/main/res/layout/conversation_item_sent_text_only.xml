@@ -89,7 +89,6 @@
             android:visibility="gone"
             app:footer_icon_color="@color/signal_icon_tint_secondary"
             app:footer_text_color="@color/signal_text_secondary" />
-
     </org.thoughtcrime.securesms.conversation.ConversationItemBodyBubble>
 
     <org.thoughtcrime.securesms.components.AlertView
@@ -111,5 +110,4 @@
         android:layout_marginTop="-8dp"
         android:orientation="horizontal"
         app:rcv_outgoing="true" />
-
 </org.thoughtcrime.securesms.conversation.ConversationItem>
